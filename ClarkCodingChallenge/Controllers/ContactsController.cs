@@ -8,8 +8,12 @@ namespace ClarkCodingChallenge.Controllers
 {
     public class ContactsController : Controller
     {
-        // TODO: Implement ContactRepository and move this list there. (use singleton)
-        List<ContactModel> ContactList = new List<ContactModel>();
+        private readonly ContactRepository _contactRepository;
+
+        public ContactsController(ContactRepository contactRepo)
+        {
+            _contactRepository = contactRepo;
+        }
 
         public IActionResult Index()
         {
@@ -52,7 +56,7 @@ namespace ClarkCodingChallenge.Controllers
                 Email = email.Trim()
             };
 
-            ContactList.Add(newContact);
+            _contactRepository.Add(newContact);
 
             return View("AddContactConfirmation");
         }
