@@ -2,11 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using ClarkCodingChallenge.Models;
 using ClarkCodingChallenge.Utilities;
+using System.Collections.Generic;
 
 namespace ClarkCodingChallenge.Controllers
 {
     public class ContactsController : Controller
     {
+        // TODO: Implement ContactRepository and move this list there. (use singleton)
+        List<ContactModel> ContactList = new List<ContactModel>();
+
         public IActionResult Index()
         {
             return View();
@@ -40,6 +44,15 @@ namespace ClarkCodingChallenge.Controllers
                 // show alert box "Please provide a valid email address."
                 return View("AddContacts"); // remove once alert box implemented
             }
+
+            ContactModel newContact = new ContactModel()
+            {
+                FirstName = firstName.Trim(),
+                LastName = lastName.Trim(),
+                Email = email.Trim()
+            };
+
+            ContactList.Add(newContact);
 
             return View("AddContactConfirmation");
         }
