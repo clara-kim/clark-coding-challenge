@@ -33,7 +33,7 @@ namespace ClarkCodingChallenge.Controllers
         [HttpPost]
         public IActionResult AddContacts(string firstName, string lastName, string email)
         {
-            // TODO: implement if you have time to look into displaying alert boxes
+            // TODO: Implement if you have time to look into displaying alert boxes
             if (string.IsNullOrEmpty(firstName))
             {
                 // show alert box "First name is required"
@@ -66,5 +66,18 @@ namespace ClarkCodingChallenge.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // TODO: Look into best practices for having an API controller and MVC controller in the same 
+        // project and then refactor accordingly.
+        //[ApiController]
+        [Route("api/[controller]")]
+        
+        // GET api/contacts
+        [HttpGet]
+        public ActionResult<IEnumerable<ContactModel>> Get()
+        {
+            return _contactRepository.GetContactList();
+        }
+
     }
 }

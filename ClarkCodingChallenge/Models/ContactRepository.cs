@@ -17,6 +17,12 @@ namespace ClarkCodingChallenge.Models
             _contactList = new List<ContactModel>();
         }
 
+        // Getter for _contactList
+        public List<ContactModel> GetContactList()
+        {
+            return _contactList;
+        }
+
         // Adds a new contact to the list of contacts
         // Param: A contact (likely without its id) to be added to the list
         // Returns: A contact (with updated id)
