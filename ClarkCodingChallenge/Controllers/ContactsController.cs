@@ -29,14 +29,18 @@ namespace ClarkCodingChallenge.Controllers
             if (string.IsNullOrEmpty(firstName))
             {
                 // show alert box "First name is required"
-            } else if (string.IsNullOrEmpty(firstName))
+                return View("AddContacts"); // remove once alert box implemented
+            }
+            else if (string.IsNullOrEmpty(firstName))
             {
                 // show alert box "First name is required"
+                return View("AddContacts"); // remove once alert box implemented
             } else if (!ValidityUtilities.IsValidEmail(email))
             {
                 // show alert box "Please provide a valid email address."
+                return View("AddContacts"); // remove once alert box implemented
             }
-            
+
             return View("AddContactConfirmation");
         }
 
