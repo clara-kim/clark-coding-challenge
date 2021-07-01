@@ -79,5 +79,8 @@ namespace ClarkCodingChallenge.Controllers
             return _contactRepository.GetContactList();
         }
 
+        // GET api/contacts?lastName=smith
+
+        // GET api/contacts?sort=lastName&order=asc
     }
 }
